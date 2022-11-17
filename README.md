@@ -11,5 +11,6 @@ let g:os_clipboard_enble = 0
 nnoremap <F9> :OsYankToggle <CR>
 
 ```
-
+# 참고
+[Vim 숫자 레지스터 쉬프터 만들기](https://johngrib.github.io/wiki/vim/numbered-register-shift/)
 
