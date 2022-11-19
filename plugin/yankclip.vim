@@ -9,7 +9,9 @@
 if exists("g:loaded_yankclip")
     finish
 endif
-let g:loaded_yankclip = 1
+let g:loaded_yankclip = 1 
+
+let s:yank_cache_0 = @0
 
 " OS Check
 if has("mac")
@@ -31,19 +33,25 @@ end
 function! s:toggle()
     let g:os_clipboard_enble = ! g:os_clipboard_enble
     echom "Yank to OS clipboard " . g:os_clipboard_enble
-    "let s:clip = ''
+endfunction
+
+function! s:save_cache()
+        let s:yank_cache_0 = @0
 endfunction
 
 function! s:push()
         if ! v:true == g:os_clipboard_enble
             return
         endif
-        let s:reg0= substitute(@0, '\n', '','')
-        if has("wsl")
-            call system('echo '.shellescape(s:reg0).' | '.s:clip)
+        if s:yank_cache_0 != @0
+            let s:reg0= substitute(@0, '\n', '','')
+            let @+ = expand(@0)
+            if has("wsl")
+                call system('echo '.shellescape(s:reg0).' | '.s:clip)
+            endif
+            call s:save_cache()
+            return
         endif
-        let @+ = expand(@0)
-        return
 endfunction
 command -nargs=0 OsYankToggle call s:toggle()
 command -nargs=0 OSYank call s:push()
