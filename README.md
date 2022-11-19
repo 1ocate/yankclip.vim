@@ -5,6 +5,8 @@ yankclip은 WSL과 Mac OS 환경에서 iTerm2, wezterm 등의 터미널에서 vi
 
 스크롤로 한 화면에 들어오지 않는 모든 코드나 문장을 마우스로 드래그하지 비주얼 모드로 복사해서 사용해보세요.
 
+* WSL, Mac 환경에서 개발하였고, 다른 OS 호환여부는 확인 못하였습니다.
+
 # 설치방법
 [vim-plugin](https://github.com/junegunn/vim-plug) 사용
 
