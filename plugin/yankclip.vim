@@ -38,7 +38,7 @@ function! s:push()
     endif
     let op = v:event.operator
     if op ==# 'y'
-        let s:reg0= substitute(@0, '\n', '','')
+        let s:reg0= substitute(@0, '\n\+$', '','')
         let @+ = s:reg0
         if has("wsl")
             call system('printf %s '.shellescape(s:reg0).' | '.s:clip)
