@@ -1,5 +1,4 @@
-" Title:        yankclip
-" Description:  yank to OS clipboard
+" Title:        yankclip" Description:  yank to OS clipboard
 " Last Change:  2022-11-17
 " Maintainer:   locate <https://github.com/1ocate>
 
@@ -10,8 +9,6 @@ if exists("g:loaded_yankclip")
     finish
 endif
 let g:loaded_yankclip = 1 
-
-let s:yank_cache_0 = @0
 
 " OS Check
 if has("mac")
@@ -35,23 +32,20 @@ function! s:toggle()
     echom "Yank to OS clipboard " . g:os_clipboard_enble
 endfunction
 
-function! s:save_cache()
-        let s:yank_cache_0 = @0
-endfunction
-
 function! s:push()
-        if ! v:true == g:os_clipboard_enble
-            return
+    if ! g:os_clipboard_enble
+        return
+    endif
+    let op = v:event.operator
+    if op ==# 'y'
+        let s:reg0= substitute(@0, '\n', '','')
+        let @+ = s:reg0
+        if has("wsl")
+            call system('printf %s '.shellescape(s:reg0).' | '.s:clip)
         endif
-        if s:yank_cache_0 != @0
-            let s:reg0= substitute(@0, '\n', '','')
-            let @+ = expand(@0)
-            if has("wsl")
-                call system('echo '.shellescape(s:reg0).' | '.s:clip)
-            endif
-            call s:save_cache()
-            return
-        endif
+    else
+        return
+    endif
 endfunction
 command -nargs=0 OsYankToggle call s:toggle()
 command -nargs=0 OSYank call s:push()
