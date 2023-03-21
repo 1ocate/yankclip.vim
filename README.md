@@ -5,8 +5,6 @@ yankclip은 WSL과 Mac OS 환경에서 iTerm2, wezterm 등의 터미널에서 vi
 이를 통해 스크롤로 한 화면에 들어오지 않는 모든 코드나 문장을 마우스로 드래그하여 불편하게 복사하지 않고, 비주얼 모드로 쉽게 복사하여 사용할 수 있습니다.
 
 
-단, WSL 환경에서는 한글이 깨질 수 있으므로 이 점에 유의해주세요.
-
 ![yankclip](https://user-images.githubusercontent.com/29521447/202831340-3574ec2f-17dd-4eea-8439-1ffe7ec9b6c9.gif)
 
 
@@ -45,15 +43,9 @@ nnoremap <F9> :OsYankToggle <CR>
 ```
 
 ##  요구 사항
-Yankclip은 다음 요구 사항을 충족해야 합니다.
 
 * Vim 8.2 이상
 * Mac OS X 또는 WSL (Windows Subsystem for Linux)
-
-
-## 해결되지 않은 이슈 사항
-WSL 환경에서 한글을 yank 하는 경우 깨지는 현상이 있습니다. 이것은 Windows Powershell 문제로, Windows 업데이트등을 통해 해결되지 않으면 개선 할 수 없는 문제로 확인 하였습니다.
-다만 개선 사항이 있으면 언제든지 알려주세요.
 
 ## 참고
 [Vim 숫자 레지스터 쉬프터 만들기](https://johngrib.github.io/wiki/vim/numbered-register-shift/)
