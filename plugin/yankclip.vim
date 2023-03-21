@@ -11,15 +11,21 @@ endif
 let g:loaded_yankclip = 1 
 
 " OS Check
+let s:flag_able= 0
 if has("mac")
     let s:clip = @+
     let s:flag_able= 1
 elseif has("wsl")
     " case WSL find clipboard path
-    let s:clip = '/mnt/c/Windows/System32/clip.exe' 
-    if executable(s:clip)
-        let s:flag_able= 1
+    let s:clipboard_command = 'xsel'
+    let s:clipboard_option = '-b'
+    let s:clip = s:clipboard_command . ' ' . s:clipboard_option
+    if executable(s:clipboard_command)
+        let s:flag_able = 1
+    else
+        echom "xsel is not available. Please install xsel"
     end
+
 end
 
 " Check excutable system clipboard
