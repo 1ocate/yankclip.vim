@@ -12,20 +12,20 @@ yankclip은 WSL과 Mac OS 환경에서 iTerm2, wezterm 등의 터미널에서 vi
 ## 설치 방법
 1. Vundle을 사용한 설치
 ```vim 
-Plugin '1ocate/yankclip'
+Plugin '1ocate/yankclip.vim'
 ```
 :PluginInstall을 실행
 
 2. vim-plug을 이용한 설치
 ```vim 
-Plug '1ocate/yankclip'
+Plug '1ocate/yankclip.vim'
 ```
 :PluginInstall을 실행
 
 3. 수동 설치
 플러그인을 Clone후  ~/.vim/plugin 디렉토리에 복사
 ```bash
-git clone https://github.com/1ocate/yankclip.git
+git clone https://github.com/1ocate/yankclip.vim.git
 cp yankclip/plugin/yankclip.vim ~/.vim/plugin/
 ```
 
